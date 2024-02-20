@@ -31,6 +31,7 @@ To use Duwak for embedding dual watermarks in large language models, follow thes
 4. **Run Benchmark:**
    - Execute the benchmark script with the following command:
      ```bash
+     cd run
      python3 -m ../src/watermark-benchmark/pipeline/run_all.py config.yml
      ```
 
@@ -38,5 +39,30 @@ To use Duwak for embedding dual watermarks in large language models, follow thes
 
 - Duwak watermarking scheme is implemented in `./src/watermark-benchmark/watermark/schemes/contrastive_distri.py`.
 - This codebase is an extension of the MarkMyWords project. The original codebase is available at [MarkMyWords GitHub Repository](https://github.com/wagner-group/MarkMyWords).
+## Docker Support
 
- 
+### Pull Image from Docker Hub and Tag:
+To pull the pre-built image from Docker Hub and tag it as `duwak`, use the following commands:
+
+```bash
+docker pull ctrlmybgm/markword:1.0
+docker tag ctrlmybgm/markword:1.0 duwak
+```
+
+### Run Container:
+To run the Docker container with your source code, replace `/path_to_your_source` with the actual path to your source code. Use the following command:
+
+```bash
+cd run
+docker run -it --rm \\
+    --gpus all \\
+    -v /path_to_your_src:/app/src \\
+    -v $(pwd):/project \\
+    -w /project \\
+    -e PYTHONPATH="/app/src:$PYTHONPATH" \\
+    -e HF_TOKEN=your_HF_TOKEN \\
+    duwak \\
+    bash -c "python3 ./src/watermark_benchmark/pipeline/run_all.py ./run/config.yml"
+```
+
+This setup allows you to easily use the `duwak` image for Docker container operations. 
