@@ -1,0 +1,34 @@
+done_tasks: '.saved_tasks'
+num_return_sequences: 1
+model: 'meta-llama/Llama-2-7b-chat-hf'
+engine: 'hf'
+output: 'generation_results'
+watermark: 'watermark_specs'
+max_new_tokens: 1024
+distributed: False
+seed: 0
+hf_batch_size: 2
+huffman_coding: 'static_data/encodings/llama_2_encoding.tsv' 
+prompt_size: 4
+# Perturb parameters
+paraphrase: False
+dipper_processes: 1
+openai_processes: 1
+translate_processes: 1
+openai_key: 'your_key'
+threads: 32
+misspellings: 'static_data/misspellings.json'
+devices: [0]
+
+# Detect parameters
+detect_threads: 1
+
+# rating parameters
+rate_raw: True
+openai_quality: True
+
+# Summarize parameter
+results: 'results'
+threshold: 0.8
+hull_axis: [['generator', 'rng']]
+aggregate_thresholds: [[0.02, 1], [0.1, 1], [0.02, 0.8], [0.1, 0.8], [0.02, -1], [0.1, -1]]
