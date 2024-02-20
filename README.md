@@ -41,13 +41,7 @@ To use Duwak for embedding dual watermarks in large language models, follow thes
 - This codebase is an extension of the MarkMyWords project. The original codebase is available at [MarkMyWords GitHub Repository](https://github.com/wagner-group/MarkMyWords).
 ## Docker Support
 
-### Pull Image from Docker Hub and Tag (Optional):
-To pull the pre-built image from Docker Hub and tag it as `duwak`, use the following commands:
 
-```bash
-docker pull ctrlmybgm/markword:1.0
-docker tag ctrlmybgm/markword:1.0 duwak
-```
 ### Build Image (Optional):
 To build the Docker image from the source code, use the following command:
 
